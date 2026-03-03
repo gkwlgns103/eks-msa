@@ -101,7 +101,7 @@ jobs:
       - name: deploy gateway
         if: steps.changes.outputs.gateway == 'true'
         run: |
-          kubectl apply -f ./msa/apigateway/k8s/depl_svc.yml
+          kubectl apply -f ./msa/apigateway/k8s/apigateway_depl_svc.yml
           kubectl rollout restart deployment apigateway-depl -n soldesk
 
 
@@ -121,7 +121,7 @@ jobs:
       - name: deploy member
         if: steps.changes.outputs.member == 'true'
         run: |
-          kubectl apply -f ./msa/member/k8s/depl_svc.yml
+          kubectl apply -f ./msa/member/k8s/member_depl_svc.yml
           kubectl rollout restart deployment member-depl -n soldesk
 
 
@@ -141,7 +141,7 @@ jobs:
       - name: deploy ordering
         if: steps.changes.outputs.ordering == 'true'
         run: | 
-          kubectl apply -f ./msa/ordering/k8s/depl_svc.yml
+          kubectl apply -f ./msa/ordering/k8s/ordering_depl_svc.yml
           kubectl rollout restart deployment ordering-depl -n soldesk
 
 
@@ -161,5 +161,5 @@ jobs:
       - name: deploy product
         if: steps.changes.outputs.product == 'true'
         run: |
-          kubectl apply -f ./msa/product/k8s/depl_svc.yml
+          kubectl apply -f ./msa/product/k8s/product_depl_svc.yml
           kubectl rollout restart deployment product-depl -n soldesk
